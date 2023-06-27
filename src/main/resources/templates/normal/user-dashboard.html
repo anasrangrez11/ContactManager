@@ -1,0 +1,23 @@
+<!DOCTYPE html >
+<html xmlns:th="http://www.thymeleaf.org" th:replace="normal/base::layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>About</title>
+</head>
+<body>
+<section>
+<div th:if="${user}">
+<h1>Hello <span th:text="${user.name}"></span> !! to you personal dashboard</h1>
+<h2>Email : <span th:text="${user.email}"></span></h2>
+<h2>About : <span th:text="${user.about}"></span></h2>
+<h2>Image : <span th:text="${user.image}"></span></h2>
+
+<h2><a th:href="@{/logout}">Log Out</a></h2>
+
+
+</div>
+<div>
+I am here for presence
+</div>
+</section>
+</body>

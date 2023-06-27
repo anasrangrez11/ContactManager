@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="normal/base::layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<section class="">
+<div class="container">
+<div class="row">
+<div class="col-md-6 offset-md-3">
+<div class="my-card ">
+
+ 
+  <!-- Alert toast for warning -->
+  <div th:if="${contact}">
+ <div  th:if="${session.message}" >
+  
+  <div th:classappend="${'alert-'+session.message.type}" class="alert alert-warning alert-dismissible fade show" role="alert">
+  <span th:text="${session.message.content}"></span>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+</div>
+  </div>
+
+<h1 class="text-center">Add Contact</h1>
+
+<form th:action="@{/user/addcontact}" enctype="multipart/form-data" method="post" th:object="${contact}">
+<!-- Contact name -->
+	<div class="form-group">
+    	<label for="cname">Name</label>
+    	<input required name="cname" type="text" class="form-control" 
+    	     	 id="cname" placeholder="Enter here" />
+    	 <a class="invlaid-feedback" ></a>
+    	
+ 	 </div>
+ 	 
+ 	 <div class="form-group">
+    	<label for="NickName"> Nick Name</label>
+    	<input name="NickName" type="text" class="form-control" 
+    	     	 id="NickName" placeholder="Enter here" required/>
+    	 <a class="invlaid-feedback" ></a>
+    	
+ 	 </div>
+ 	 
+ 	 <!-- email -->
+	<div class="form-group">
+    	<label for="c_email">Email</label>
+    	<input required name="c_email" type="email" class="form-control" id="c_email" placeholder="Enter email here" >
+    	
+ 	 </div>
+ 	 
+ 	 <!-- Number -->
+ 	 <div class="form-group">
+    	<label for="number">Phone Number</label>
+    	<input name="number" type="number" class="form-control" id="number" placeholder="Enter phone here" required>
+    	
+ 	 </div>
+ 	 
+ 	 
+ 	  <!-- Work -->
+	<div class="form-group">
+    	<label for="work">Work</label>
+    	<input name="work" type="text" class="form-control" id="work" placeholder="Enter work" required>
+    	
+ 	 </div>
+ 	 
+ 	 
+ 	 <div class="custom-file">
+ 	 <input type="file" name="profileimage">
+ 	 </div>
+ 	 
+ 	 <!-- about field -->
+ 	 
+ 	 <div class="form-group">
+ 	 <textarea name="description" th:text="${description}" placeholder="Enter contact description" rows="5" class="form-control" required></textarea>
+ 	 </div>
+ 	 
+ 
+<!-- Buttons -->
+<div class="container  text-center">
+<button type="submit" class="btn btn-outline-primary">Save</button>
+
+</div>
+
+</form>
+
+
+</div>
+</div>
+</div>
+</div>
+<script src="https://cdn.tiny.cloud/1/moj6u39fsy254nnvf0z6gcc4x7l31g4u4abe8h1qyqn8tljb/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+
+
+</section>
+
+</body>
+</html>
